@@ -80,6 +80,7 @@ console.log(tt);
 // 1. cutZero()라는 함수를 만듭시다. 이 함수는 문자를 하나 입력하면 맨 앞에 '0' 문자가 있으면 제거하고 문자 type으로 return 해줍니다.
 // 2. removeDash()라는 함수를 만듭시다. 이 함수는 문자를 하나 입력하면 대시기호 '-' 가 있으면 전부 제거해주고 그걸 숫자 type으로 return 해줍니다.
 // 3. 함수에 타입지정시 type alias를 꼭 써보도록 합시다.
+// 정규식으로 풀면 쉬운걸 엄청 배배꼬아서 풀어버린 나는 바보
 // type CutZeroType = (x: string) => string;
 // const cutZero: CutZeroType = (x) => {
 //   let arr = x.split("");
@@ -108,3 +109,4 @@ console.log(tt);
 //   return parseInt(filterDash.join(""), 10);
 // };
 // removeDash("010-1234-5678");
+/*********************************************************************************************************************************/
