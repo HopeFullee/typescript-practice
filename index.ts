@@ -107,42 +107,50 @@ console.log(tt);
 
 // 정규식으로 풀면 쉬운걸 엄청 배배꼬아서 풀어버린 나는 바보
 
-// type CutZeroType = (x: string) => string;
+type CutZeroType = (x: string) => string;
 
-// const cutZero: CutZeroType = (x) => {
-//   let arr = x.split("");
+const cutZero: CutZeroType = (x) => {
+  let arr = x.split("");
 
-//   if (arr[0] === "0") {
-//     let sliceTo = 0;
-//     for (let i = 0; i <= arr.length; i++) {
-//       if (arr[i] !== "0") break;
-//       sliceTo = i + 1;
-//     }
-//     arr = arr.slice(sliceTo);
-//   }
+  if (arr[0] === "0") {
+    let sliceTo = 0;
+    for (let i = 0; i <= arr.length; i++) {
+      if (arr[i] !== "0") break;
+      sliceTo = i + 1;
+    }
+    arr = arr.slice(sliceTo);
+  }
 
-//   console.log(arr.join(""));
-//   return arr.join("");
-// };
+  return arr.join("");
+};
 
-// cutZero("000000앞빵처리000000");
+type RemoveDashType = (x: string) => number;
 
-// type RemoveDashType = (x: string) => number;
+const removeDash: RemoveDashType = (x) => {
+  const arr = x.split("");
+  const filterDash: string[] = [];
 
-// const removeDash: RemoveDashType = (x) => {
-//   const arr = x.split("");
-//   const filterDash: string[] = [];
+  arr.forEach((val, _) => {
+    if (val !== "-") {
+      filterDash.push(val);
+    }
+  });
 
-//   arr.forEach((val, _) => {
-//     if (val !== "-") {
-//       filterDash.push(val);
-//     }
-//   });
+  return parseInt(filterDash.join(""), 10);
+};
 
-//   console.log(parseInt(filterDash.join(""), 10));
-//   return parseInt(filterDash.join(""), 10);
-// };
+type GetPhoneNumberType = (
+  number: string,
+  cutZero: CutZeroType,
+  removeDash: RemoveDashType
+) => void;
 
-// removeDash("010-1234-5678");
+const getPhoneNumber: GetPhoneNumberType = (number, cutZero, removeDash) => {
+  const cutZeroRes = cutZero(number);
+  const removeDashRes = removeDash(cutZeroRes);
+  console.log(removeDashRes);
+};
+
+getPhoneNumber("010-1234-5678", cutZero, removeDash);
 
 /*********************************************************************************************************************************/
