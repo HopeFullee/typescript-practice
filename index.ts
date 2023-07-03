@@ -107,50 +107,100 @@ console.log(tt);
 
 // 정규식으로 풀면 쉬운걸 엄청 배배꼬아서 풀어버린 나는 바보
 
-type CutZeroType = (x: string) => string;
+// type CutZeroType = (x: string) => string;
 
-const cutZero: CutZeroType = (x) => {
-  let arr = x.split("");
+// const cutZero: CutZeroType = (x) => {
+//   let arr = x.split("");
 
-  if (arr[0] === "0") {
-    let sliceTo = 0;
-    for (let i = 0; i <= arr.length; i++) {
-      if (arr[i] !== "0") break;
-      sliceTo = i + 1;
-    }
-    arr = arr.slice(sliceTo);
-  }
+//   if (arr[0] === "0") {
+//     let sliceTo = 0;
+//     for (let i = 0; i <= arr.length; i++) {
+//       if (arr[i] !== "0") break;
+//       sliceTo = i + 1;
+//     }
+//     arr = arr.slice(sliceTo);
+//   }
 
-  return arr.join("");
-};
+//   return arr.join("");
+// };
 
-type RemoveDashType = (x: string) => number;
+// type RemoveDashType = (x: string) => number;
 
-const removeDash: RemoveDashType = (x) => {
-  const arr = x.split("");
-  const filterDash: string[] = [];
+// const removeDash: RemoveDashType = (x) => {
+//   const arr = x.split("");
+//   const filterDash: string[] = [];
 
-  arr.forEach((val, _) => {
-    if (val !== "-") {
-      filterDash.push(val);
-    }
-  });
+//   arr.forEach((val, _) => {
+//     if (val !== "-") {
+//       filterDash.push(val);
+//     }
+//   });
 
-  return parseInt(filterDash.join(""), 10);
-};
+//   return parseInt(filterDash.join(""), 10);
+// };
 
-type GetPhoneNumberType = (
-  number: string,
-  cutZero: CutZeroType,
-  removeDash: RemoveDashType
-) => void;
+// type GetPhoneNumberType = (
+//   number: string,
+//   cutZero: CutZeroType,
+//   removeDash: RemoveDashType
+// ) => void;
 
-const getPhoneNumber: GetPhoneNumberType = (number, cutZero, removeDash) => {
-  const cutZeroRes = cutZero(number);
-  const removeDashRes = removeDash(cutZeroRes);
-  console.log(removeDashRes);
-};
+// const getPhoneNumber: GetPhoneNumberType = (number, cutZero, removeDash) => {
+//   const cutZeroRes = cutZero(number);
+//   const removeDashRes = removeDash(cutZeroRes);
+//   console.log(removeDashRes);
+// };
 
-getPhoneNumber("010-1234-5678", cutZero, removeDash);
+// getPhoneNumber("010-1234-5678", cutZero, removeDash);
+
+/*********************************************************************************************************************************/
+
+// Q. Car 클래스를 만들고 싶습니다.
+// 1. 대충 { model : '소나타', price : 3000 } 이렇게 생긴 object를 복사해주는 class를 만들어보십시오.
+// 2. 그리고 복사된 object 자료들은 .tax() 라는 함수를 사용가능한데 현재 object에 저장된 price의 10분의1을 출력해주어야합니다.
+// 3. model과 price 속성의 타입지정도 알아서 잘 해보십시오. tax() 함수의 return 타입도요.
+
+// class Car {
+//   model: string;
+//   price: number;
+
+//   constructor() {
+//     this.model = "소나타";
+//     this.price = 3000;
+//   }
+
+//   tax = (): number => {
+//     const taxRes = this.price / 10;
+//     console.log(taxRes);
+//     return taxRes;
+//   };
+// }
+
+// const sonata = new Car();
+// sonata.tax();
+
+// Q. class인데 파라미터가 잔뜩 들어가는 class Word를 만들어봅시다.
+// 1. object 만들 때 new Word() 소괄호 안에 숫자 혹은 문자를 입력하면
+// 2. 숫자는 전부 object 안의  num 속성 안에 array 형태로 저장되고
+// 3. 문자는 전부 object 안의 str 속성 안에 array 형태로 저장되는 class를 만들어봅시다.
+// 4. class 만들 때 넣을 수 있는 숫자와 문자 갯수는 일단 제한은 없습니다. 그리고 타입 빼먹지 마셈
+
+// class Words {
+//   str: string[] = [];
+//   num: number[] = [];
+//   constructor(...rest: (string | number)[]) {
+//     rest.forEach((v) => {
+//       if (typeof v === "string") {
+//         this.str.push(v);
+//       } else if (typeof v === "number") {
+//         this.num.push(v);
+//       }
+//     });
+//   }
+// }
+
+// const wordsObj = new Words("kim", 123, 122, "lee");
+// console.log(wordsObj.num);
+// console.log(wordsObj.str);
 
 /*********************************************************************************************************************************/
