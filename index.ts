@@ -283,16 +283,77 @@ console.log(tt);
   interface를 이용해서 object에 타입지정도 해보십시오. 
 */
 
-interface Calculator {
-  plus: (x: number, y: number) => number;
-  minus: (x: number, y: number) => number;
-}
+// interface Calculator {
+//   plus: (x: number, y: number) => number;
+//   minus: (x: number, y: number) => number;
+// }
 
-const calcObj: Calculator = {
-  plus: (x, y) => {
-    return x + y;
-  },
-  minus: (x, y) => {
-    return x - y;
-  },
-};
+// const calculatorObj: Calculator = {
+//   plus: (x, y) => {
+//     return x + y;
+//   },
+//   minus: (x, y) => {
+//     return x - y;
+//   },
+// };
+
+/*********************************************************************************************************************************/
+
+/* 
+  Q1. 숫자 여러개를 입력하면 최댓값을 return 해주는 함수를 만들어봅시다. 
+  최댓값(6,3,7,2) 이렇게 쓰면 7이 return 되어야합니다. 
+  (조건1) 넣을 수 있는 숫자 갯수는 제한없음, 0 이상의 정수만 가능합니다.
+  (조건2) Math.max() 사용금지 반복문이나 쓰셈 
+*/
+
+// const getMaxNum = (...nums: number[]): number => {
+//   let maxNum = 0;
+//   nums.forEach((v) => {
+//     if (maxNum < v) maxNum = v;
+//   });
+
+//   console.log(maxNum);
+//   return maxNum;
+// };
+
+// getMaxNum(-1, 1, 5, 10);
+
+/*
+  Q2. 이렇게 생긴 object 자료를 파라미터로 입력할 수 있는 함수를 만들어봅시다. 
+  함수( { user : 'kim', comment : [3,5,4], admin : false } )
+  어떻게 코드를 짜야할까요?
+  (조건1) 오늘 배운 파라미터 destructuring 문법을 써봅시다.
+  (조건2) 함수실행시 입력한 파라미터의 value들 (kim, [3,5,4] 이런거)을 전부 콘솔창에 출력해줘야합니다.
+*/
+
+// type GetObjParam = {
+//   user: string;
+//   comment: number[];
+//   admin: boolean;
+// };
+
+// const testObj = { user: "kim", comment: [3, 5, 4], admin: false };
+
+// const getObj = ({ user, comment, admin }: GetObjParam): void => {
+//   console.log(user, comment, admin);
+// };
+
+// getObj(testObj);
+
+/*
+  Q3. 이렇게 생긴 array 자료를 파라미터로 입력할 수 있는 함수를 만들어봅시다.
+  함수( [40, 'wine', false] )
+  어떻게 코드를 짜야할까요?
+  (조건1) 오늘 배운 파라미터 destructuring 문법을 써봅시다.
+  (조건2) 함수실행시 입력한 파라미터들을 전부 콘솔창에 출력해줘야합니다.
+*/
+
+// type getArrayType = (number | string | boolean)[];
+
+// const testArray = [40, "wine", false];
+
+// const getArray = ([a, b, c]: getArrayType): void => {
+//   console.log(a, b, c);
+// };
+
+// getArray(testArray);
