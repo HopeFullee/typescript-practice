@@ -635,22 +635,74 @@ Q4. 다음과 같은 문자/숫자 분류기 함수를 만들어보십시오.
 함수('b', 5, 6, 8, 'a') 이렇게 사용할 경우 이 자리에 [ ['b', 'a'], [5, 6, 8] ] 이 return 되어야합니다.
 ***************************************************************************************************/
 
-type FilterType = (...restParam: (string | number)[]) => [string[], number[]];
+// type FilterType = (...restParam: (string | number)[]) => [string[], number[]];
 
-const strNumFilter: FilterType = (...restParam) => {
-  const strArr: string[] = [];
-  const numArr: number[] = [];
-  restParam.forEach((v) => {
-    if (typeof v === "string") {
-      strArr.push(v);
-    } else if (typeof v === "number") {
-      numArr.push(v);
-    }
-  });
+// const strNumFilter: FilterType = (...restParam) => {
+//   const strArr: string[] = [];
+//   const numArr: number[] = [];
+//   restParam.forEach((v) => {
+//     if (typeof v === "string") {
+//       strArr.push(v);
+//     } else if (typeof v === "number") {
+//       numArr.push(v);
+//     }
+//   });
 
-  return [strArr, numArr];
-};
+//   return [strArr, numArr];
+// };
 
-const filteredResult = strNumFilter(123, "asd", 456, 789, "qwer");
+// const filteredResult = strNumFilter(123, "asd", 456, 789, "qwer");
 
-console.log(filteredResult);
+// console.log(filteredResult);
+
+/*********************************************************************************************************************************/
+
+/********************************************************************************
+  Q. 다음 타입을 변환기 돌려보십시오.
+
+  type Bus = {
+    color : string,
+    model : boolean,
+    price : number
+  }
+
+  동료가 잘못 만든 타입입니다.
+  color, model, price 속성은 전부 string 또는 number 타입이어야합니다.
+
+  1. 변환기 하나 만드시고
+  2. 기존 Bus 타입을 변환기 돌려서 위 조건을 충족하는 새로운 타입을 하나 만들어보십시오.
+*********************************************************************************/
+
+// type Bus = {
+//   color: string;
+//   model: boolean;
+//   price: number;
+// };
+
+// type TypeChanger<MyType> = {
+//   [key in keyof MyType]: string | number;
+// };
+
+// type newType = TypeChanger<Bus>;
+
+/***************************************************************************
+Q2. 이런 변환기는 어떻게 만들어야할까요?
+
+object안에 들어있는 모든 속성을
+string, number 이렇게 고정된 타입으로 변환해주는게 아니라
+내가 원하는 타입을 입력하면 그걸로 변환해주는 범용성 좋은 변환기를 만들어보십시오.
+****************************************************************************/
+
+// type TestType = {
+//   test: undefined;
+//   test2: undefined;
+//   test3: undefined;
+// };
+
+// type TypeChangerTwo<MyType, T> = {
+//   [key in keyof MyType]: T;
+// };
+
+// type newTypeTwo = TypeChangerTwo<TestType, number>;
+
+/*********************************************************************************************************************************/
